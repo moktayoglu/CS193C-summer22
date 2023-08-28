@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bookland</title>
+<link type="text/css" rel="stylesheet" href="bookland.css" />
+</head>
+<body>
+<div class="all">
+<h1>bookland</h1>
+
+<fieldset id="main">
+<div id="center">
+	<div class="line">
+	<label for="author_box">Author name:</label>
+	<input class="_white _right" type="textbox" id="author_box" name="authorBox"/><br />
+	</div>
+	<div class="line">
+	<label for="title_box">Book title:</label>
+	<input class="_white _right" type="textbox" id="title_box" name="titleBox"/><br />
+	</div>
+	<input class="_white _right" type="button" id="clearinfo" value="Clear Info"/>
+	<input class="_white _right" type="button" id="findbook" value="Find Book"/><br />
+	
+	<textarea class="_white" id="descBox" name="descriptionBox" readonly></textarea>
+</div>
+</fieldset>
+
+</div>
+
+<script>
+var authors = ["Thomas Mann", "James Joyce", "E. M. Forster", "Isabel Allende", "Isabel Allende"]
+var titles = ["Death in Venice", "A portrait of the artist as a young man", "A room with a view",
+ "The house of spirits", "Of love and shadows"]
+ 
+ var descriptions = ["One of the most famous literary works of the twentieth century, this novella embodies themes that preoccupied Thomas Mann in much of his work: the duality of art and life, the presence of death and disintegration in the midst of existence, the connection between love and suffering and the conflict between the artist and his inner self.",
+ "This book is a fictional re-creation of the Irish writer's own life and early environment. The experiences of the novel's young hero, unfold in astonishingly vivid scenes that seem freshly recalled from life and provide a powerful portrait of the coming of age of a young man of unusual intelligence, sensitivity and character.",
+ "This work displays an unusually perceptive view of British society in the early 20th century.It is a social comedy set in Florence, Italy, and Surrey, England. Its heroine, Lucy Honeychurch, struggling against straitlaced Victorian attitudes of arrogance, narroe mindedness and sobbery, falls in love - while on holiday in Italy - with the socially unsuitable George Emerson.",
+ "Allende describes the life of three generations of a prominent family in Chile and skillfully combines with this all the main historical events of the time, up until Pinochet's dictatorship.",
+ "The whole world of Irene Beltran, a young reporter in Chile at the time of the dictatorship, is destroyed when she discovers a series of killings carried out by government soldiers. With the help of a photographer, Francisco Leal, and risking her life, she tries to come up with evidence against the dictatorship."]
+ 
+function query(){
+	var search_author = document.getElementsByName("authorBox")[0].value
+	var search_title = document.getElementsByName("titleBox")[0].value
+
+	for (var i = 0; i<authors.length; i++){
+		if ((search_author == authors[i]) && (search_title == titles[i])){
+			document.getElementsByName("descriptionBox")[0].value = descriptions[i];
+		}
+		
+		if (search_title == titles[i]){
+			document.getElementsByName("authorBox")[0].value = authors[i]
+			document.getElementsByName("descriptionBox")[0].value = descriptions[i];
+		}
+		
+		if (search_author == authors[i]){
+			document.getElementsByName("titleBox")[0].value = titles[i]
+			document.getElementsByName("descriptionBox")[0].value = descriptions[i];
+		}
+	}
+}
+
+function clear(){
+	document.getElementsByName("authorBox")[0].value = ""
+	document.getElementsByName("titleBox")[0].value = ""
+	document.getElementsByName("descriptionBox")[0].value = ""
+	
+}
+
+document.getElementById("findbook").addEventListener("click", query)
+document.getElementById("clearinfo").addEventListener("click", clear)
+</script>
+</body>
+</html>

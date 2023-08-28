@@ -1,0 +1,71 @@
+/* CSS for blog.html of A1 */
+
+#all {
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 800px;
+}
+
+.entryfooter{
+	float:right;
+	font-size: 8pt;
+	font-family: "Times New Roman", Times, serif;
+	font-style: italic;
+}
+
+
+h1{
+	text-align: right;
+	color:rgb(170,10,21);;
+	padding: 20px;
+	font-family: sans-serif;
+}
+
+.titlebar{
+	border: 5px solid rgb(170,10,21);
+}
+
+
+.entrycontents{
+	font-size: 12pt;
+	font-family: "Arial";
+	margin: 30px 100px 10px 10px;
+}
+
+h2{
+	background-color: lightgray;
+	
+}
+
+h2:hover{
+	color: rgb(180,10,10);
+	background-color: gray;
+	text-decoration: underline;
+
+}
+
+.entry {
+	border-bottom: 2px black solid;
+}
+
+.entrydate{
+	float: right;
+	font-style: italic;
+}
+
+.logo{
+	float:right;
+	height:80px;
+	width:80px;
+	margin: 3px;
+	
+}
+
+.memchu{
+	float:left;
+	height: 100px;
+	width: 120px;
+	margin: 0px 20px 100px 20px;
+}
+

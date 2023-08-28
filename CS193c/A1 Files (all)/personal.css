@@ -1,0 +1,27 @@
+/* CSS format for personal.html for A1 of CS 193C */
+
+#my_photo {
+    float: left;
+    border: 2px solid #000000;
+    padding: 2px;
+    margin: 10px;
+}
+
+h1{
+	text-align: center;
+}
+
+body {
+	font-family: Arial;
+}
+
+.external:hover{
+	color: green;
+	background-color: powderblue;
+}
+
+.stanford{
+	color:red;
+	font-weight:bold;
+
+}

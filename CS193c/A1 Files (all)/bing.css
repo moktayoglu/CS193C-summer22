@@ -1,0 +1,131 @@
+
+h1, #edition, h2, .calendar_entry, h3{
+	font-family: sans-serif;
+}
+
+
+h1{
+	color:red;
+	font-size: 36pt;
+	float:left;
+	margin-top: 0px;
+	margin-left: 30px;
+}
+
+#main{
+	width: 1000px;
+  	margin: 0 auto;
+	
+}
+
+
+h2{
+	font-size: 28pt;
+}
+
+
+.left{
+	float: left; 
+	width: 60%; 
+	margin: 0 5%;
+}
+
+
+.right{
+	float: left;
+	width: 25%;
+	margin: 0 5% 0 0;
+}
+
+
+
+#edition{
+	float:right;
+	text-align:right;
+	color:red;
+	font-family: sans-serif;
+	width: 14ex;
+	font-weight: bold;
+
+}
+
+#bing_photo{
+	float:left;
+	width: 400px;
+	margin:10px;
+}
+
+.main_entry{
+	font-size: 14pt;
+
+}
+
+.calendar_entry{
+	border-top: 1pt solid black;
+	font-style:italic;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 300px;
+}
+
+.last{
+	border-bottom: 1pt solid black;
+
+}
+
+@media screen and (max-width: 815px) {
+	#edition{
+		float:none;
+		text-align:left;
+		width: 19ex;
+		margin-left: 30px;
+		padding:0px;
+		font-size:16pt;
+	}
+	
+	.right{
+		float: none;
+		margin-left:50px;
+	}
+	
+	.calendar_entry{
+		width: 600px;
+	}
+	
+	h1{
+		font-size: 32pt;
+	}
+	
+	.main_entry{
+		font-size: 12pt;
+
+	}
+	
+	#bing_photo{
+		width: 350px;
+	}
+	
+	h2{
+		font-size: 24pt;
+	}
+}
+
+@media screen and (max-width: 650px) {
+	#bing_photo{
+		float:none;
+		width: 70%;
+	}
+
+	.main_entry{
+		overflow: hidden;
+		width:80%
+	}
+	
+	h1{
+		font-size:28pt;
+	}
+
+	.calendar_entry{
+		width: 500px;
+	}
+}

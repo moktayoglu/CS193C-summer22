@@ -1,0 +1,64 @@
+*{font-family:sans-serif;}
+h2{
+	background-color:gray;
+	border: 1px black solid;
+	font-variant: small-caps;
+	color: white;
+	padding: 5px 0px 5px 5px;
+	margin: 0px  0px  10px  0px;
+}
+
+#left_form{
+	overflow:hidden;
+}
+
+.price{
+	float:right;
+}
+
+.field{
+	margin-top:10px;
+	width: 300px;
+	float:left;	
+}
+
+ul{
+	margin-top:0px;
+}
+
+li{
+	font-size: 8pt;
+	margin:2px;
+}
+
+.top{
+	overflow:hidden;
+}
+
+#choose_color{
+	width:500px;
+	height:170px;
+}
+
+#selectColor{
+	height:70px;
+}
+
+option{
+	padding:5px;
+}
+#car_photo{
+	float:right;
+}
+
+.config{
+	height:160px;
+}
+
+input[type="radio"]{
+  margin: 0 0 10px 0;
+}
+
+select{
+	width:80px;
+}

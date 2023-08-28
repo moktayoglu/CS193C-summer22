@@ -1,0 +1,163 @@
+*{
+	font-family: sans-serif;
+
+}
+
+
+body {
+	display: grid;
+	grid-template-columns: 200px 200px 200px;
+	grid-template-rows: auto;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 800px;
+}
+
+div {
+	border-bottom: 2px solid black;
+	border-top: 2px solid black;
+	margin: 5px;
+	padding: 5px;
+	background-color: rgb(204, 145, 145);
+	font-weight:bold
+}
+
+#header {
+	grid-column-start: 1;
+	grid-column-end: 4;
+	grid-row-start: 1;
+	grid-row-end: 4;
+	background-color: rgb(155,0,0);
+	font-size: 20pt;
+	color: white;
+	margin-right: 10px;
+	font-family:sans-serif;
+}
+
+h1{
+	margin-left: 20px;
+}
+
+
+#profile_pic{
+	grid-column-start: 1;
+	grid-column-end: 2;
+	grid-row-start: 4;
+	grid-row-end: 7;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+#name{
+	grid-column-start: 2;
+	grid-column-end: 4;
+	grid-row-start: 4;
+	grid-row-end: 5;
+	font-size: 24pt;
+	margin-left: 10px;
+	font-weight: bold;
+}
+
+#status_updates{
+	grid-column-start: 2;
+	grid-column-end: 4;
+	grid-row-start: 5;
+	grid-row-end: 6;
+}
+
+#first{
+	grid-column-start: 2;
+	grid-column-end: 4;
+	grid-row-start: 6;
+	grid-row-end: 7;
+
+}
+
+#second{
+	grid-column-start: 2;
+	grid-column-end: 4;
+	grid-row-start: 7;
+	grid-row-end: 8;
+
+}
+
+#third{
+	grid-column-start: 2;
+	grid-column-end: 4;
+	grid-row-start: 8;
+	grid-row-end: 9;
+
+}
+
+#fourth{
+	grid-column-start: 2;
+	grid-column-end: 4;
+	grid-row-start: 9;
+	grid-row-end: 10;
+
+}
+#post_updates{
+	grid-column-start: 4;
+	grid-column-end: 5;
+	grid-row-start: 1;
+	grid-row-end: 2;
+
+}
+
+#update_text{
+	grid-column-start: 4;
+	grid-column-end: 5;
+	grid-row-start: 2;
+	grid-row-end: 4;
+}
+
+#update_button{
+	grid-column-start: 4;
+	grid-column-end: 5;
+	grid-row-start: 4;
+	grid-row-end: 5;
+}
+
+
+.text_area{
+	resize:none;
+	margin-left:5px;
+}
+
+#about_me{
+	grid-column-start: 1;
+	grid-column-end: 2;
+	grid-row-start: 7;
+	grid-row-end: 8;
+}
+
+
+
+#friends{
+	grid-column-start: 1;
+	grid-column-end: 2;
+	grid-row-start: 8;
+	grid-row-end: 10;
+}
+
+
+.logo{
+	float:right;
+}
+
+.title{
+	font-weight:bold;
+}
+
+.entry{
+	font-size: 10pt;
+	margin-left: 5px;
+	margin-top: 2px;
+}
+
+.update{
+	border-top: 1px solid black;
+	margin: 5px;
+}
+

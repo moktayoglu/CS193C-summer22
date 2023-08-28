@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Open Weather</title>
+<style>
+
+#output{
+	height:150px;
+	width: 300px;
+}
+</style>
+</head>
+<body>
+
+<h1>Open Weather via AJAX</h1>
+<label>Enter ZIP code:</label>
+<input type="text" id="zip_entry"/>
+<input type="button" value="Get Weather" id="get_button"/>
+<input type="button" value="Clear" id="clear"/>
+<br/>
+<textarea id="output" readonly></textarea>
+
+<script>
+
+const API_KEY = "3ac202b7857d57e58eb09c379f79757c";
+var weatherButton = document.getElementById("get_button");
+var clearButton = document.getElementById("clear");
+var resultArea = document.getElementById("output");
+
+
+function getWeather(){
+	var zip = document.getElementById("zip_entry").value
+	fetch('https://api.openweathermap.org/data/2.5/weather?zip=' + zip +',us&units=imperial&APPID=' + API_KEY)
+        .then((response) => response.json())
+		.then((jsonResult) => processResults(jsonResult))
+        .catch(notifyOfError);
+}
+
+function processResults(jsonResult){
+	resultArea.value = jsonResult.name + ": " + jsonResult.main.temp + "\n" + resultArea.value;
+}
+
+function clear(){
+	resultArea.value = "";
+}
+function notifyOfError(err) {
+    var errMsg = "<p>" + err.msg + "</p>";
+	document.getElementById("news").innerHTML = errMsg;
+}
+
+clearButton.addEventListener("click", clear);
+weatherButton.addEventListener("click", getWeather);
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset = "UTF-8" />
+<title>Bay Area Colleges and Universities</title>
+<script src="colleges.js" defer></script>
+<link type = "text/css" rel = "stylesheet" href="colleges.css">
+
+</head>
+<body id="body">
+<h1>Bay Area Colleges and Universities</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>SAT High</th>
+			<th>SAT Low</th>
+			<th>Tuition</th>
+		</tr>
+	</thead>
+	<tbody id="tableContent"></tbody>
+</table>
+
+<form id="main" method="post" enctype="text/plain">
+<div id ="select_criteria">
+
+<h2>Search Criteria</h2>
+
+<div id="selections">
+
+	<div id="radios">
+		<input type="radio" id="publicUni" name="college_type">
+		<label for="publicUni">Public</label>
+		
+		<input type="radio" id="privateUni" name="college_type">
+		<label for="privateUni">Private</label>
+		
+		<input type="radio" id="dontCare" name="college_type">
+		<label for="dontCare">Don't Care</label><br />
+	</div>
+
+	<div class="entry">
+	<label>Maximum Tuition</label><input type="text" id="maxTuition"><br />
+	<label class="note">leave blank for dont care</label>
+	<br />
+	</div>
+	
+	<div class="entry">
+	<label>Maximum High SAT</label><input type="text" id="maxSATh"><br/>
+	<label class="note">leave blank for dont care</label>
+	<br />
+	</div>
+
+	<div class="entry">
+	<label>Minimum Low SAT</label><input type="text" id="minSATl"><br/>
+	<label class="note">leave blank for dont care</label>
+	<br />
+	</div>
+</div>
+
+
+<input type="button" id="updateButton" value="Update">
+
+
+</div><br />
+</form>
+
+</body>
+</html>

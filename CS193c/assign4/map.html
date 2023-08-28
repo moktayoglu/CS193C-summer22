@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Stanford Map</title>
+<link type = "text/css" rel = "stylesheet" href="map.css"> 
+</head>
+<body>
+<div id ="map" style="position: absolute; left: 0px; top: 0px; width: 600px; height: 600px">
+	<img id = "mapImg" src = "map-s.gif" alt ="map image" style="position:absolute; top: -300px; left: -300px;">
+	
+	<div id = "navigationRosette">
+		<button id = "zoomIn" type = "button">+</button>
+		<button id = "zoomOut" type = "button">-</button><br/>
+		<button id = "up" type = "button">^</button><br/>
+		<button id = "left" type = "button">&#60;</button>
+		<button id = "right" type = "button">></button><br/>
+		<button id = "down" type = "button">∨</button>
+	</div>
+	
+</div>
+
+
+<script>
+//setting up global variables
+const BORDER = 10;
+const MARGIN = 80;
+const D_MOVE = 3;
+
+//distance variables for dragging
+var distX = 0; 
+var distY = 0;
+var zoomIndex = 0;
+
+var isDragging= false;
+
+//holds only the names of maps
+var mapArray = new Array("map-s.gif", "map-m.gif", "map-l.gif", "map-xl.gif");
+
+//preloading
+//imgArray holds images of maps
+var imgArray = new Array() 
+for(var i=0; i < mapArray.length; i++) {
+    imgArray[i] = new Image();
+    imgArray[i].src = mapArray[i];
+}
+
+var map = document.getElementById("map");
+var mapImg = document.getElementById("mapImg");
+var zoomInButton = document.getElementById("zoomIn");
+var zoomOutButton = document.getElementById("zoomOut");
+var upButton = document.getElementById("up");
+var leftButton = document.getElementById("left");
+var rightButton = document.getElementById("right");
+var downButton = document.getElementById("down");
+var navRos = document.getElementById("navigationRosette");
+
+
+navRos.style.width = "90px";
+navRos.style.height = "110px";
+navRos.style.top = "0px";
+navRos.style.left = "0px";
+
+//centers map after window resize
+function resizeHandler(){
+	map.style.width = window.innerWidth - 2*(MARGIN + BORDER) +"px";
+	map.style.height = window.innerHeight - 2*(MARGIN + BORDER)+"px";
+}
+
+
+//checks if a given coordinate is in DOM element's rectangular frame
+function inFrame(x,y,elem) {
+	return (x >= parseInt(elem.style.left)+BORDER + MARGIN && x <= parseInt(elem.style.left) + parseInt(elem.style.width)+BORDER + MARGIN
+				&& y >= parseInt(elem.style.top) +BORDER + MARGIN && y <= parseInt(elem.style.top) + parseInt(elem.style.height) +BORDER + MARGIN);
+}
+
+//gets the distance between clicked position and map left/top
+//saves their distance, does it only if the cursor is in right frame
+function handleMouseDown(evt){
+	
+	if (inFrame(evt.clientX,evt.clientY,map) && (!inFrame(evt.clientX, evt.clientY,navRos))) {
+		distX = parseInt(mapImg.style.left) - evt.clientX
+		distY = parseInt(mapImg.style.top) - evt.clientY 
+		isDragging = true;
+		evt.preventDefault();
+		}
+}
+
+//stops dragging after mouse released, sets cursor to normal
+function handleMouseUp(evt) {
+	if (isDragging) {
+		isDragging = false;	
+		document.body.style.cursor = "auto";	
+	}
+}
+
+//does dragging by correcting the left/top by distance
+//changes cursor style
+function handleMouseMove(evt) {
+	if (isDragging) {
+		document.body.style.cursor = "move";
+		mapImg.style.left = evt.clientX  + distX +"px";
+		mapImg.style.top =  evt.clientY + distY +  "px";
+		evt.preventDefault();
+	}
+}
+
+//zooms in/out to the map by changing the photo,
+//and recenters the new image by changing the left/top 
+//by the differences in size
+function setZoomCoor(){
+		var lastLeft = parseInt(mapImg.style.left);
+		var lastTop = parseInt(mapImg.style.top);
+		var lastWidth = mapImg.width;
+		var lastHeight = mapImg.height;
+		
+		var nextImg = imgArray[zoomIndex];
+		
+		mapImg.style.left = (lastLeft - (nextImg.width - lastWidth)/2) + "px";
+    	mapImg.style.top = (lastTop - (nextImg.height - lastHeight)/2)  + "px";
+		
+		mapImg.width = nextImg.width;
+		mapImg.height = nextImg.height;
+		mapImg.src = mapArray[zoomIndex];
+		
+}
+
+//increments zoom index, invokes setZoomCoor
+function zoomIn(){
+	if(zoomIndex < mapArray.length-1 ){
+		zoomIndex = zoomIndex +1;
+		setZoomCoor();	
+	}
+}
+
+//decrements zoom index, invokes setZoomCoor
+function zoomOut(){
+	if(zoomIndex > 0){
+		zoomIndex = zoomIndex -1;
+		setZoomCoor();
+	}
+}
+
+//centers the image to double clicked coordinates
+//does it only if the coor is in appopriate frame
+function doubleClickToCenter(evt){
+	
+	if (inFrame(evt.clientX,evt.clientY,map) && (! inFrame(evt.clientX, evt.clientY,navRos))) {
+		var dx = evt.clientX - (parseInt(map.style.width) + 2*BORDER + 2*MARGIN + parseInt(map.style.left))/2;
+		var dy = evt.clientY - (parseInt(map.style.height) + 2*BORDER + 2*MARGIN + parseInt(map.style.top))/2;
+		mapImg.style.left = parseInt(mapImg.style.left) - dx +"px";
+		mapImg.style.top = parseInt(mapImg.style.top) - dy +"px";
+	}
+}
+
+//moves map only half of either dimension after direction
+//buttons clicked
+function moveMap(evt){
+	var sum = 0;
+	var max_x = parseInt(map.style.width) /2;
+	var max_y = parseInt(map.style.height) /2;
+
+    while (sum <= max_x && sum <= max_y) {
+    	if (evt.target.id == "up"){
+			mapImg.style.top =  parseInt(mapImg.style.top) + D_MOVE + "px";	
+		}
+			
+		if (evt.target.id == "left"){
+			mapImg.style.left = parseInt(mapImg.style.left) + D_MOVE +"px"; 
+		}
+			
+		if (evt.target.id == "right"){
+			mapImg.style.left = parseInt(mapImg.style.left) - D_MOVE +"px";
+		}
+		
+		if (evt.target.id == "down"){
+			mapImg.style.top = parseInt(mapImg.style.top) - D_MOVE + "px";
+		}
+		
+		sum = sum + D_MOVE;
+	}
+}
+
+
+window.addEventListener("load", resizeHandler);
+window.addEventListener("resize", resizeHandler);
+zoomInButton.addEventListener("click", zoomIn);
+zoomOutButton.addEventListener("click",zoomOut);
+rightButton.addEventListener("click", moveMap);
+leftButton.addEventListener("click", moveMap);
+downButton.addEventListener("click", moveMap);
+upButton.addEventListener("click", moveMap);
+document.addEventListener("dblclick", doubleClickToCenter);
+document.addEventListener("mousedown",handleMouseDown);
+document.addEventListener("mouseup",handleMouseUp);
+document.addEventListener("mousemove",handleMouseMove);
+</script>
+</body>
+</html>

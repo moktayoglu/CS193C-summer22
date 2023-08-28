@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Configure Your GT Super Sportscar</title>
+<link type="text/css" rel="stylesheet" href="car-options.css" />
+<script src="car-options.js" defer>
+</script>
+</head>
+
+<body>
+<h1>Configure Your GT Super Sportscar</h1>
+
+	<form
+		id="main"
+		method="post"
+		enctype="text/plain">
+		<div class=	top>
+		<fieldset class="field config">
+		<h2>Configuration</h2>
+			<input name="configSelect" id="GTmanual" type="radio" checked="checked">
+			<label for="GTmanual">GT Manual <span class="price">$17,790.00</span></label> <br />
+			<input name="configSelect" id="GTauto" type="radio">
+			<label for="GTauto">GT Automatic <span class="price">$18,590.00</span></label> <br />
+			<input name="configSelect" id="GTSmanual" type="radio">
+			<label for="GTSmanual">GT-S Manual <span class="price">$22,455.00</span></label> <br />
+			<input name="configSelect" id="GTSsports" type="radio">
+			<label for="GTSsports">GT-S Sportshift <span class="price">$23,155.00</span></label> 
+		</fieldset>
+		
+		<fieldset id="choose_color" class="field">
+		<h2>Choose A Color</h2>
+		<select id="selectColor" name="color" multiple>
+		<option value="red">Red</option>
+		<option value="blue">Blue</option>
+		<option value="silver">Silver</option>
+		<option value="white">White</option>
+		<option value="black">Black</option>
+		</select>
+		<img id="car_photo" src="red.jpg" alt="Vehicle Photo"/>
+		</fieldset>
+		</div>
+		<div id="left_form">
+		<fieldset class="field">
+		<h2>Factory Options</h2>
+			<input name="factoryOps" id="op1" type="radio" checked="checked">
+			<label for="op1">Option Combo#1 <span class="price">$1235.00</span></label><br />
+				<ul>
+				<li>Power Windows, Doors, Cruise Control</li>
+				</ul>
+			<input name="factoryOps" id="op2" type="radio">
+			<label for="op2">Option Combo#2 <span class="price">$3354.00</span></label><br />
+				<ul>
+				<li>Rear Spoiler and Fog Lamps</li>
+				<li>Keyless Entry</li>
+				<li>Power Tilt & Slide Moonroof</li>
+				<li>Power Windows, Doors, Cruise Control</li>
+				</ul>
+		
+			<input name="factoryOps" id="op3" type="radio">
+			<label for="op3">No Combo<span class="price">$0</span></label><br />
+		
+		</fieldset>
+		
+		</div>
+		<div id="left_form">
+		<fieldset class="field">
+		<h2>Dealer Options</h2>
+		<input name="dealerSelect" id="stereo" type="checkbox">
+		<label for="stereo">Upgraded Stereo System<span class="price">$550.00</span></label><br />
+		<input name="dealerSelect" id="security" type="checkbox">
+		<label for="security">VIP Security System<span class="price">$399.00</span></label><br />
+		<input name="dealerSelect" id= "mirror" type="checkbox">
+		<label for="mirror">Auto-Dimming Mirror<span class="price">$295.00</span></label><br />
+		
+		</fieldset>
+		</div>
+		
+		<fieldset class="field">
+		<h2>Total Price</h2>
+		
+		<input type="textbox" name="totaldisplay" readonly>
+		<input class="price" type="button" id="calculateButton" value="Calculate Total">
+		
+		</fieldset>
+
+
+	</form>
+	
+
+</body>
+</html>
+

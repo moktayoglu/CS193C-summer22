@@ -1,0 +1,45 @@
+#map{
+    border: 10px #BD2031 groove;
+    overflow: hidden;
+    border-radius: 10px;
+    margin:80px;
+}
+
+#navigationRosette{
+	position:absolute;
+	background-color: rgba(230,230,230,0.4);
+	border:2px solid rgb(230,230,230) ;
+	border-radius : 10px;
+}
+
+#zoomIn{
+	margin-bottom: 5px;
+}
+
+#down, #up{
+	margin-left:33px;
+}
+
+#left{
+	margin-right: 5px;
+	margin-left:16px;
+}
+
+#zoomIn{
+	margin-left:20px;
+	margin-bottom:10px;
+}
+
+body{
+	background-color:rgb(240,239,232);
+}
+
+button{
+	background-color:white;
+	color: rgb(105,105,105);
+	border-radius:4px;
+}
+
+button:hover{
+	background-color:lightblue;
+}
